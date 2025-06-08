@@ -6,6 +6,8 @@ public class Player extends Actor
     public int framecount = 1;   
     public boolean move = false;
     public int animationCounter=0;
+    public int speed = 3;
+    public static int playerX,playerY;
     GreenfootImage IdleAnimation1 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage IdleAnimation2 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\01_idle_down.png");
     GreenfootImage IdleAnimation3 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\02_idle_down.png");
@@ -14,8 +16,11 @@ public class Player extends Actor
     GreenfootImage IdleAnimation6 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\05_idle_down.png");
     GreenfootImage IdleAnimation7 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\06_idle_down.png");
     GreenfootImage IdleAnimation8 = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\07_idle_down.png");
+    
     public void act()
     {
+        playerX = getX();
+        playerY = getY();
         animationCounter = animationCounter +1;
         if(animationCounter % 6 == 0){
             Animate();
@@ -24,7 +29,6 @@ public class Player extends Actor
     }
     
     private void move(){
-        int speed = 2;
         if(Greenfoot.isKeyDown("Up")){
             setLocation(getX(), getY()-speed);
         }
