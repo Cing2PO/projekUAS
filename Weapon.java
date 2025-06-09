@@ -1,19 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Weapon here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Weapon extends Actor
 {
-    /**
-     * Act - do whatever the Weapon wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private Player player;
     GreenfootImage weapon = new GreenfootImage("images\\Guns\\AK47.png");
+    GreenfootImage bullet = new GreenfootImage("images\\Bullets\\PistolAmmoSmall.png");
     boolean spreadMode = false;
     int cooldown = 0;
     public Weapon(Player player){
@@ -23,6 +14,7 @@ public class Weapon extends Actor
     public void act()
     {
         followPlayer();
+        followMouse();
         handleModeSwitch();
         shoot();
     }
@@ -42,17 +34,20 @@ public class Weapon extends Actor
         }
     }
     private void shoot(){
-        if(Greenfoot.mouseClicked(null)){
-            if(spreadMode == false){
-                shootStraight();
-            } else {
-                shootSpread();
+        if(Greenfoot.getMouseInfo() != null){
+            if(Greenfoot.getMouseInfo().getButton() == 1){
+                if(spreadMode == false){
+                    shootStraight();
+                } else {
+                    shootSpread();
+                }
             }
         }
     }
     private void shootStraight(){
         Projectile p = new Projectile(10);
         getWorld().addObject(p, getX(), getY());
+        setImage(bullet);
         p.setRotation(getRotation());
     }
     private void shootSpread(){
