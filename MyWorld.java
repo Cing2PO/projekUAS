@@ -9,9 +9,11 @@ public class MyWorld extends World
     Player player = new Player();
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
+    GreenfootImage playBackgorund = new GreenfootImage("MAP FINAL.png");
     public MyWorld()
     {    
         super(400, 400, 1); 
+        setBackground(playBackgorund);
         addObject(player, 200, 200);
         player.setImage(playerSprite);
     }
