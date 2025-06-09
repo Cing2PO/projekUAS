@@ -7,6 +7,7 @@ public class MyWorld extends World
     public int spawntimer3= 150;
     public int spawntimer4= 150;
     Player player = new Player();
+    Weapon weapon = new Weapon(player);
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
     GreenfootImage playBackgorund = new GreenfootImage("MAP FINAL.png");
@@ -16,6 +17,7 @@ public class MyWorld extends World
         setBackground(playBackgorund);
         addObject(player, 200, 200);
         player.setImage(playerSprite);
+        addObject(weapon,200,210);
     }
     public void act(){
         spawntimer1 = spawntimer1 + 1 ;
