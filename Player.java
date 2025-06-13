@@ -7,6 +7,7 @@ public class Player extends Char
     public boolean move = false;
     public int animationCounter=0;
     public int speed = 3;
+    public int hp = 100;
     public int diagonalspeed = speed/2;
     public static int playerX,playerY;
     String[] IdleAnimation = {"Animasi\\player1\\idle\\idle_down\\00_idle_down.png","Animasi\\player1\\idle\\idle_down\\01_idle_down.png","Animasi\\player1\\idle\\idle_down\\02_idle_down.png","Animasi\\player1\\idle\\idle_down\\03_idle_down.png","Animasi\\player1\\idle\\idle_down\\04_idle_down.png","Animasi\\player1\\idle\\idle_down\\05_idle_down.png","Animasi\\player1\\idle\\idle_down\\06_idle_down.png","Animasi\\player1\\idle\\idle_down\\07_idle_down.png"};
@@ -25,6 +26,9 @@ public class Player extends Char
             if(animationCounter % 6 == 0){
                 framecount = super.Animate(IdleAnimation, framecount);
             }
+        }
+        if(hp <= 0){
+            super.death();
         }
         move();
     }
@@ -90,6 +94,13 @@ public class Player extends Char
             move = false;
         }
     }
+    
+    public void getDamage(int damage){
+        hp = hp - damage;
+        System.out.println(hp);
+    }
+    
+    
     
     
 }
