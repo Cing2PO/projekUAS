@@ -4,7 +4,7 @@ public class MyWorld extends World
 {
     public MyWorld()
     {    
-        super(400, 400, 1);
+        super(640, 640, 1);
     }
     
 }

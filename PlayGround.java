@@ -10,11 +10,12 @@ public class PlayGround extends MyWorld
     Weapon weapon = new Weapon(player);
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
-    GreenfootImage playBackgorund = new GreenfootImage("MAP FINAL.png");
     public PlayGround()
     {     
+        GreenfootImage playBackgorund = new GreenfootImage("MAP FINAL.png");
+        playBackgorund.scale(playBackgorund.getWidth()+240,playBackgorund.getHeight()+240);
         setBackground(playBackgorund);
-        addObject(player, 200, 200);
+        addObject(player, 320, 320);
         player.setImage(playerSprite);
         addObject(weapon,200,210);
     }
