@@ -3,10 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Weapon extends Actor
 {
     private Player player;
-    GreenfootImage weapon = new GreenfootImage("images\\Guns\\AK47.png");
-    GreenfootImage bullet = new GreenfootImage("images\\Bullets\\PistolAmmoSmall.png");
+    final GreenfootImage weapon = new GreenfootImage("images\\Guns\\AK47.png");
+    final GreenfootImage bullet = new GreenfootImage("images\\Bullets\\PistolAmmoSmall.png");
     boolean spreadMode = false;
     int cooldown = 0;
+    int straightShotsFired = 0;
+    final int cooldownTime = 30;
     public Weapon(Player player){
         this.player = player;
         setImage(weapon);
@@ -16,7 +18,11 @@ public class Weapon extends Actor
         followPlayer();
         followMouse();
         handleModeSwitch();
-        shoot();
+        if (cooldown > 0) {
+            cooldown--;
+        } else {
+            shoot();
+        }
     }
     public void followMouse(){
         MouseInfo mouse = Greenfoot.getMouseInfo();    
@@ -31,16 +37,16 @@ public class Weapon extends Actor
         if (Greenfoot.isKeyDown("m")) {
             spreadMode = !spreadMode;
             Greenfoot.delay(10);
+            straightShotsFired = 0;
         }
     }
     private void shoot(){
-        if(Greenfoot.getMouseInfo() != null){
-            if(Greenfoot.getMouseInfo().getButton() == 1){
-                if(spreadMode == false){
-                    shootStraight();
-                } else {
-                    shootSpread();
-                }
+        if(Greenfoot.mousePressed(null)){
+            if(spreadMode == false){
+                shootStraight();
+            } else {
+                shootSpread();
+                cooldown = cooldownTime;
             }
         }
     }
@@ -48,6 +54,11 @@ public class Weapon extends Actor
         Projectile p = new Projectile(10);
         getWorld().addObject(p, getX(), getY());
         p.setRotation(getRotation());
+        straightShotsFired++;
+        if(straightShotsFired >= 3){
+            cooldown = cooldownTime;
+            straightShotsFired = 0;
+        }
     }
     private void shootSpread(){
         for (int angle : new int[] {-10, 0, 10}) {
