@@ -1,7 +1,7 @@
 import greenfoot.*;
-public class HpFull extends PlayerHP
+public class HpFull extends HpBar
 {
-    private final GreenfootImage barFull= new GreenfootImage("HpBar\\HPBarIn.png");
+    public GreenfootImage barFull= new GreenfootImage("HpBar\\HPBarIn.png");
     public HpFull(int width,int height)
     {
         barFull.scale(barFull.getWidth()+width,barFull.getHeight()+height);
@@ -11,7 +11,16 @@ public class HpFull extends PlayerHP
     {
         // Add your action code here.
     }
-    public void hpUpdate(int HP,int width){
-        
+    public GreenfootImage hpUpdate(int hp){
+         GreenfootImage image= getImage(); 
+        if (hp!=0){
+            int width= image.getWidth();
+            int hpminus= (int)width-hp;
+            image.scale(image.getWidth()-hpminus,image.getHeight());
+        }else{
+             image.setTransparency(0);
+        }
+         
+        return barFull=image;
     }
 }

@@ -43,4 +43,5 @@ public class Enemy extends Char
             getWorld().removeObject(this);
         }
     }
+    
 }

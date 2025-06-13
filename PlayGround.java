@@ -6,9 +6,9 @@ public class PlayGround extends MyWorld
     public int spawntimer2= 150;
     public int spawntimer3= 150;
     public int spawntimer4= 150;
-    Player player = new Player();
     HpEmpty hpEmpty= new HpEmpty(100,5);
     HpFull hpFull= new HpFull(100,5);
+    Player player = new Player(hpFull);
     Weapon weapon = new Weapon(player);
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");

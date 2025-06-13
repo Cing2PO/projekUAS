@@ -12,6 +12,7 @@ public class Player extends Char
     public int hp = 100;
     public int diagonalspeed = speed/2;
     public static int playerX,playerY;
+    HpFull bar;
     String[] IdleAnimation = {"Animasi\\player1\\idle\\idle_down\\00_idle_down.png","Animasi\\player1\\idle\\idle_down\\01_idle_down.png","Animasi\\player1\\idle\\idle_down\\02_idle_down.png","Animasi\\player1\\idle\\idle_down\\03_idle_down.png","Animasi\\player1\\idle\\idle_down\\04_idle_down.png","Animasi\\player1\\idle\\idle_down\\05_idle_down.png","Animasi\\player1\\idle\\idle_down\\06_idle_down.png","Animasi\\player1\\idle\\idle_down\\07_idle_down.png"};
     String[] WalkUpAnimation = {"Animasi\\player1\\Walk\\walk_up\\00_walk_up.png","Animasi\\player1\\Walk\\walk_up\\01_walk_up.png","Animasi\\player1\\Walk\\walk_up\\02_walk_up.png","Animasi\\player1\\Walk\\walk_up\\03_walk_up.png","Animasi\\player1\\Walk\\walk_up\\04_walk_up.png","Animasi\\player1\\Walk\\walk_up\\05_walk_up.png","Animasi\\player1\\Walk\\walk_up\\06_walk_up.png","Animasi\\player1\\Walk\\walk_up\\07_walk_up.png"};
     String[] WalkDownAnimation = {"Animasi\\player1\\Walk\\walk_down\\00_walk_down.png","Animasi\\player1\\Walk\\walk_down\\01_walk_down.png","Animasi\\player1\\Walk\\walk_down\\02_walk_down.png","Animasi\\player1\\Walk\\walk_down\\03_walk_down.png","Animasi\\player1\\Walk\\walk_down\\04_walk_down.png","Animasi\\player1\\Walk\\walk_down\\05_walk_down.png","Animasi\\player1\\Walk\\walk_down\\06_walk_down.png","Animasi\\player1\\Walk\\walk_down\\07_walk_down.png"};
@@ -20,7 +21,8 @@ public class Player extends Char
     String[] WalkLeftUpAnimation = {"Animasi\\player1\\Walk\\walk_left_up\\00_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\01_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\02_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\03_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\04_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\05_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\06_walk_left_up.png","Animasi\\player1\\Walk\\walk_left_up\\07_walk_left_up.png"};
     String[] WalkLeftDownAnimation = {"Animasi\\player1\\Walk\\walk_left_down\\00_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\01_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\02_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\03_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\04_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\05_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\06_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\07_walk_left_down.png"};
     
-    public Player(){
+    public Player(HpFull bar){
+        this.bar =  bar;
         alive = true;
     }
     
@@ -109,10 +111,11 @@ public class Player extends Char
     
     public void getDamage(int damage){
         hp = hp - damage;
+        bar.hpUpdate(hp);
     }
-    
     private void death(){
         alive = false;
+        getWorld().removeObject(bar);
         {
             getImage().setTransparency(0);
         }
