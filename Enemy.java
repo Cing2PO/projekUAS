@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Enemy extends Char
 {
-    public int framecount = 0;   
+    public int framecount = 0;  
+    private int framehit = 200;
     public boolean move = false;
     public int animationCounter=0;
     public int enemyX,enemyY;
@@ -22,16 +23,29 @@ public class Enemy extends Char
         "Animasi\\slime\\Slime1_Idle_full\\03_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\04_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\05_Slime1_Idle_full.png"};
+    public Enemy(Player player){
+        this.player = player;
+    }
     public void act()
     {
-        enemyX = getX();
-        enemyY = getY();
-        chasePlayer();
-        animationCounter = animationCounter +1;
-        if(animationCounter % 6 == 0){
-            framecount = super.Animate(IdleAnimation,framecount);
+        if(player.alive == true){
+            framehit++;
+            enemyX = getX();
+            enemyY = getY();
+            chasePlayer();
+            animationCounter = animationCounter +1;
+            if(animationCounter % 6 == 0){
+                framecount = super.Animate(IdleAnimation,framecount);
+            }
+            if(framehit  >= 200){
+            collisionPlayer();
+            }
+            projectileCollision();
         }
-        collision();
+        else{
+            return;
+        }
+        
     }
     
     public void chasePlayer(){
@@ -55,22 +69,16 @@ public class Enemy extends Char
         }
     }
     
-    public void collision(){
+    public void collisionPlayer(){
+        if(isTouching(Player.class)) {
+            player.getDamage(atkpoint);
+            framehit = 0;
+        }
+    }
+    public void projectileCollision(){
         if(isTouching(Projectile.class)){
             removeTouching(Projectile.class);
             getWorld().removeObject(this);
         }
-        else if(isTouching(Player.class)){
-            if (this.player != null){
-            player.getDamage(atkpoint);
-            }
-            else{
-            return;
-            }
-        }
-        
     }
-    
-    
-    
 }

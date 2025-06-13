@@ -19,11 +19,7 @@ public class Char extends Actor
         }
         return framecount;
     }
-    
-    public void death(){
-        getWorld().removeObject(this);
-    }
-    
+
 }
 
 
