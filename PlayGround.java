@@ -7,17 +7,21 @@ public class PlayGround extends MyWorld
     public int spawntimer3= 150;
     public int spawntimer4= 150;
     Player player = new Player();
+    HpEmpty hpEmpty= new HpEmpty(100,5);
+    HpFull hpFull= new HpFull(100,5);
     Weapon weapon = new Weapon(player);
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
     public PlayGround()
     {     
-        GreenfootImage playBackgorund = new GreenfootImage("MAP FINAL.png");
+        GreenfootImage playBackgorund = new GreenfootImage("Map\\Playground.png");
         playBackgorund.scale(playBackgorund.getWidth()+240,playBackgorund.getHeight()+240);
         setBackground(playBackgorund);
         addObject(player, 320, 320);
         player.setImage(playerSprite);
         addObject(weapon,200,210);
+        addObject(hpEmpty,70,20);
+        addObject(hpFull,70,20);
     }
     public void act(){
         spawntimer1 = spawntimer1 + 1 ;
