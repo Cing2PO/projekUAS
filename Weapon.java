@@ -47,7 +47,6 @@ public class Weapon extends Actor
     private void shootStraight(){
         Projectile p = new Projectile(10);
         getWorld().addObject(p, getX(), getY());
-        setImage(bullet);
         p.setRotation(getRotation());
     }
     private void shootSpread(){
