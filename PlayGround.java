@@ -18,6 +18,8 @@ public class PlayGround extends MyWorld
         addObject(player, 320, 320);
         player.setImage(playerSprite);
         addObject(weapon,200,210);
+        SlimeKing slimeking = new SlimeKing(player);
+        addObject(slimeking,320,100);
     }
     public void act(){
         spawntimer1 = spawntimer1 + 1 ;
@@ -38,7 +40,7 @@ public class PlayGround extends MyWorld
         }
     }
     public int enemySpawner(int x, int xstart,int y, int ystart,int spawntimer, GreenfootImage enemySprite){
-        Enemy slime = new Enemy(player);
+        Slime slime = new Slime(player);
         addObject(slime, xstart+Greenfoot.getRandomNumber(x), ystart+Greenfoot.getRandomNumber(y));
         slime.setImage(enemySprite);
         return spawntimer = 0;

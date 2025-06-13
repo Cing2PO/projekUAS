@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Char extends Actor
 {
-    public int Animate(String FramesArray[],int framecount){
+    public int Animate(String FramesArray[],int framecount,int scaling){
         GreenfootImage Frames = new GreenfootImage(FramesArray[framecount]);
-        Frames.scale(Frames.getWidth()+50,Frames.getHeight()+50);
+        Frames.scale(Frames.getWidth()+scaling,Frames.getHeight()+scaling);
         setImage(Frames);
         if(framecount == FramesArray.length -1){ 
             framecount = 0 ; 
