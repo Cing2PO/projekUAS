@@ -2,11 +2,12 @@ import greenfoot.*;
 
 public class Homepage extends MyWorld
 {
-    GreenfootImage homeBg = new GreenfootImage("Homepage.png");
     ButtonPlay play = new ButtonPlay();
     public Homepage()
     {    
+        GreenfootImage homeBg = new GreenfootImage("Homepage.png");
+        homeBg.scale(homeBg.getWidth()+240,homeBg.getHeight()+240);
         setBackground(homeBg);
-        addObject(play,200,200);
+        addObject(play,320,320);
     }
 }

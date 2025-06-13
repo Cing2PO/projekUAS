@@ -10,6 +10,7 @@ public class Char extends Actor
 {
     public int Animate(String FramesArray[],int framecount){
         GreenfootImage Frames = new GreenfootImage(FramesArray[framecount]);
+        Frames.scale(Frames.getWidth()+50,Frames.getHeight()+50);
         setImage(Frames);
         if(framecount == FramesArray.length -1){ 
             framecount = 0 ; 
