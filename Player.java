@@ -3,10 +3,12 @@ import java.util.ArrayList;  // (World, Actor, GreenfootImage, Greenfoot and Mou
 
 public class Player extends Char
 {
-    public int framecount = 0;   
+    public int framecount = 0;
+    public boolean alive = true;
     public boolean move = false;
     public int animationCounter=0;
     public int speed = 3;
+    public int hp = 100;
     public int diagonalspeed = speed/2;
     public static int playerX,playerY;
     String[] IdleAnimation = {"Animasi\\player1\\idle\\idle_down\\00_idle_down.png","Animasi\\player1\\idle\\idle_down\\01_idle_down.png","Animasi\\player1\\idle\\idle_down\\02_idle_down.png","Animasi\\player1\\idle\\idle_down\\03_idle_down.png","Animasi\\player1\\idle\\idle_down\\04_idle_down.png","Animasi\\player1\\idle\\idle_down\\05_idle_down.png","Animasi\\player1\\idle\\idle_down\\06_idle_down.png","Animasi\\player1\\idle\\idle_down\\07_idle_down.png"};
@@ -18,15 +20,23 @@ public class Player extends Char
     String[] WalkLeftDownAnimation = {"Animasi\\player1\\Walk\\walk_left_down\\00_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\01_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\02_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\03_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\04_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\05_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\06_walk_left_down.png","Animasi\\player1\\Walk\\walk_left_down\\07_walk_left_down.png"};
     public void act()
     {
-        playerX = getX();
-        playerY = getY();
-        animationCounter = animationCounter +1;
-        if(move == false){
-            if(animationCounter % 6 == 0){
-                framecount = super.Animate(IdleAnimation, framecount);
+        if(alive == true){
+            playerX = getX();
+            playerY = getY();
+            animationCounter = animationCounter +1;
+            if(move == false){
+                if(animationCounter % 6 == 0){
+                    framecount = super.Animate(IdleAnimation, framecount);
+                }
             }
+            if(hp <= 0){
+                death();
+            }
+            move();
         }
-        move();
+        else{
+            return;
+        }
     }
     
     private void move(){
@@ -90,6 +100,20 @@ public class Player extends Char
             move = false;
         }
     }
+    
+    public void getDamage(int damage){
+        hp = hp - damage;
+    }
+    
+    private void death(){
+        alive = false;
+        {
+            getImage().setTransparency(0);
+        }
+        
+    }
+    
+    
     
     
 }

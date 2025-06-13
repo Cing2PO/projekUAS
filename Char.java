@@ -20,4 +20,7 @@ public class Char extends Actor
         }
         return framecount;
     }
+
 }
+
+
