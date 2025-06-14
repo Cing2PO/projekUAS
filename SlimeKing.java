@@ -7,7 +7,7 @@ public class SlimeKing extends Enemy
     private int scaling = 200;
     public boolean move = false;
     public int animationCounter=0;
-    public int enemyX,enemyY;
+    public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
     public int atkpoint = 10; 
     public Player player;
@@ -31,6 +31,7 @@ public class SlimeKing extends Enemy
     {
         if(player.alive == true){
             framehit++;
+            enemyAtk=player.atk;
             enemyX = getX();
             enemyY = getY();
             super.chasePlayer(enemyX, enemyY, player, speed);
@@ -41,7 +42,7 @@ public class SlimeKing extends Enemy
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
             }
-            super.projectileCollision();
+            super.projectileCollision(enemyAtk);
         }
         else{
             return;

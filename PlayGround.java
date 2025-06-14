@@ -45,7 +45,11 @@ public class PlayGround extends MyWorld
     }
     public int enemySpawner(int x, int xstart,int y, int ystart,int spawntimer, GreenfootImage enemySprite){
         Slime slime = new Slime(player);
-        addObject(slime, xstart+Greenfoot.getRandomNumber(x), ystart+Greenfoot.getRandomNumber(y));
+        EnemyHp slimeBar= new EnemyHp(slime);
+        int slimeX = xstart + Greenfoot.getRandomNumber(x);
+        int slimeY = ystart + Greenfoot.getRandomNumber(y);
+        addObject(slime, slimeX, slimeY);
+        addObject(slimeBar, slimeX, slimeY - 2);
         slime.setImage(enemySprite);
         return spawntimer = 0;
     }

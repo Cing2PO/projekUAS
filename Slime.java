@@ -12,10 +12,12 @@ public class Slime extends Enemy
     private int framehit = 200;
     private int scaling = 50;
     public boolean move = false;
+    public boolean live;
     public int animationCounter=0;
-    public int enemyX,enemyY;
+    public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
     public int atkpoint = 10; 
+    public int hp=30;
     public Player player;
     public Projectile bullet;
     String[] IdleAnimation = {"Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png",
@@ -31,6 +33,7 @@ public class Slime extends Enemy
     {
         if(player.alive == true){
             framehit++;
+            enemyAtk=player.atk;
             enemyX = getX();
             enemyY = getY();
             super.chasePlayer(enemyX, enemyY, player, speed);
@@ -41,7 +44,7 @@ public class Slime extends Enemy
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
             }
-            super.projectileCollision();
+            super.projectileCollision(enemyAtk);
         }
         else{
             return;
