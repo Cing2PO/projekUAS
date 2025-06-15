@@ -29,7 +29,6 @@ public class Enemy extends Char
             setLocation(getX()+speed, getY());
         }
     }
-    
     public int collisionPlayer(int framehit, Player player, int atkpoint){
         if(isTouching(Player.class)) {
             player.getDamage(atkpoint);
@@ -39,10 +38,17 @@ public class Enemy extends Char
     }
     public void projectileCollision(int hp, int atk,EnemyHp bar){
         if(isTouching(Projectile.class)){
-            hp= hp-atk;
-            bar.hpUpdate(hp);
+            getDamage(hp,atk,bar);
             removeTouching(Projectile.class);
-            getWorld().removeObject(this);
+            if (hp <= 0) {
+                if (getWorld() != null) { 
+                        getWorld().removeObject(this);
+                    }
+            }
         }
+    }
+    public void getDamage(int hp,int damage,EnemyHp bar){
+        hp = hp - damage;
+        bar.hpUpdate(hp);
     }
 }
