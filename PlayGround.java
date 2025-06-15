@@ -21,7 +21,9 @@ public class PlayGround extends MyWorld
         player.setImage(playerSprite);
         addObject(weapon,200,210);
         SlimeKing slimeking = new SlimeKing(player);
+        EnemyHp bar= new EnemyHp(slimeking);
         addObject(slimeking,320,100);
+        addObject(slimeking.slimeBar,320, 100);
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
     }
@@ -45,11 +47,10 @@ public class PlayGround extends MyWorld
     }
     public int enemySpawner(int x, int xstart,int y, int ystart,int spawntimer, GreenfootImage enemySprite){
         Slime slime = new Slime(player);
-        EnemyHp slimeBar= new EnemyHp(slime);
         int slimeX = xstart + Greenfoot.getRandomNumber(x);
         int slimeY = ystart + Greenfoot.getRandomNumber(y);
         addObject(slime, slimeX, slimeY);
-        addObject(slimeBar, slimeX, slimeY - 2);
+        addObject(slime.slimeBar, slimeX, slimeY - 2);
         slime.setImage(enemySprite);
         return spawntimer = 0;
     }

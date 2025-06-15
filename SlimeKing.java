@@ -6,11 +6,15 @@ public class SlimeKing extends Enemy
     private int framehit = 200;
     private int scaling = 200;
     public boolean move = false;
+    public boolean alive=true;
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
-    public int atkpoint = 10; 
+    public int atkpoint = 10;
+    public int hp=200; 
     public Player player;
+    public Slime slime;
+    public EnemyHp slimeBar;
     public Projectile bullet;
     String[] IdleAnimation = {"Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\01_Slime2_Run_full.png",
@@ -26,10 +30,11 @@ public class SlimeKing extends Enemy
         this.player = player;
         SlimeKingSprite.scale(SlimeKingSprite.getWidth()+200,SlimeKingSprite.getHeight()+200);
         setImage(SlimeKingSprite);
+        this.slimeBar = new EnemyHp(this);
     }
     public void act()
     {
-        if(player.alive == true){
+        if(player.alive == true&&alive==true){
             framehit++;
             enemyAtk=player.atk;
             enemyX = getX();
@@ -42,10 +47,18 @@ public class SlimeKing extends Enemy
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
             }
-            super.projectileCollision(enemyAtk);
+            if(hp <= 0){
+                death();
+            }
+            super.projectileCollision(enemyAtk,hp,slimeBar);
         }
         else{
             return;
         }
+    }
+    private void death(){
+        alive = false;
+        getWorld().removeObject(slimeBar);
+        getWorld().removeObject(this);
     }
 }

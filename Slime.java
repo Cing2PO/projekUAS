@@ -19,6 +19,8 @@ public class Slime extends Enemy
     public int atkpoint = 10; 
     public int hp=30;
     public Player player;
+    public Slime slime;
+    public EnemyHp slimeBar;
     public Projectile bullet;
     String[] IdleAnimation = {"Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\01_Slime1_Idle_full.png",
@@ -28,6 +30,7 @@ public class Slime extends Enemy
         "Animasi\\slime\\Slime1_Idle_full\\05_Slime1_Idle_full.png"};
     public Slime(Player player){
         this.player = player;
+        this.slimeBar= new EnemyHp(this);
     }
     public void act()
     {
@@ -44,7 +47,7 @@ public class Slime extends Enemy
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
             }
-            super.projectileCollision(enemyAtk);
+            super.projectileCollision(enemyAtk,hp,slimeBar);
         }
         else{
             return;

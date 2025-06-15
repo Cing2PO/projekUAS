@@ -37,14 +37,12 @@ public class Enemy extends Char
         }
         return framehit;
     }
-    public void projectileCollision(int atk){
+    public void projectileCollision(int hp, int atk,EnemyHp bar){
         if(isTouching(Projectile.class)){
+            hp= hp-atk;
+            bar.hpUpdate(hp);
             removeTouching(Projectile.class);
             getWorld().removeObject(this);
         }
-    }
-    public void getHurt(int hp, int atk,EnemyHp bar){
-        hp= hp-atk;
-        bar.hpUpdate(hp);
     }
 }

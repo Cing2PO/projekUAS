@@ -10,7 +10,7 @@ public class Player extends Char
     public int animationCounter=0;
     public int speed = 3;
     public int hp = 100;
-    public int atk=10;
+    public int atk=1;
     public int diagonalspeed = speed/2;
     public static int playerX,playerY;
     HpFull bar;
