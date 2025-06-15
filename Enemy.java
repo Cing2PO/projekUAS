@@ -1,14 +1,8 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Musuh here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Enemy extends Char
+import greenfoot.*;
+public abstract class Enemy extends Char
 {
-    
+    public abstract void takeDamage(int damage); // This will be implemented by subclasses
+    public abstract int getHp(); // This will be implemented by subclasses
     public void chasePlayer(int enemyX, int enemyY, Player player, int speed){
         if(enemyX >= player.playerX){
             if(enemyY >=player.playerY){
@@ -38,17 +32,14 @@ public class Enemy extends Char
     }
     public void projectileCollision(int hp, int atk,EnemyHp bar){
         if(isTouching(Projectile.class)){
-            getDamage(hp,atk,bar);
-            removeTouching(Projectile.class);
-            if (hp <= 0) {
+            if (getHp() > 0) {
+                removeTouching(Projectile.class);
+                takeDamage(atk);
+            }else{
                 if (getWorld() != null) { 
                         getWorld().removeObject(this);
                     }
             }
         }
-    }
-    public void getDamage(int hp,int damage,EnemyHp bar){
-        hp = hp - damage;
-        bar.hpUpdate(hp);
     }
 }

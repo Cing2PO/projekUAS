@@ -3,15 +3,16 @@ public class EnemyHp extends HpBar
 {
     int heatlhWidth =30;
     int healtHeight= 5;
-    HpFull hpFull= new HpFull(100,5);
-    Player player = new Player(hpFull);
     private Enemy enemy;
+    
     public void act()
     {
         if(enemy.getWorld()!=null){
             int hp=getEnemyHp();
-            FollowEnemy();
-            hpUpdate(hp);
+            if(hp!=0){
+                FollowEnemy();
+                hpUpdate(hp);
+            }
         }else{
             getWorld().removeObject(this);
         }
@@ -33,12 +34,6 @@ public class EnemyHp extends HpBar
         setLocation(enemy.getX()-20, enemy.getY());
     }
      private int getEnemyHp() {
-        // Cast to specific enemy type to access their hp field
-        if (enemy instanceof Slime) {
-            return ((Slime) enemy).hp;
-        } else if (enemy instanceof SlimeKing) {
-            return ((SlimeKing) enemy).hp;
-        }
-        return 0; // Default fallback
+        return enemy.getHp(); // Now calling the abstract getHp() from Enemy
     }
 }
