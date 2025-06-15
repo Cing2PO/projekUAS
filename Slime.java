@@ -12,11 +12,15 @@ public class Slime extends Enemy
     private int framehit = 200;
     private int scaling = 50;
     public boolean move = false;
+    public boolean live;
     public int animationCounter=0;
-    public int enemyX,enemyY;
+    public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
     public int atkpoint = 10; 
+    public int hp=30;
     public Player player;
+    public Slime slime;
+    public EnemyHp slimeBar;
     public Projectile bullet;
     String[] IdleAnimation = {"Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\01_Slime1_Idle_full.png",
@@ -26,11 +30,13 @@ public class Slime extends Enemy
         "Animasi\\slime\\Slime1_Idle_full\\05_Slime1_Idle_full.png"};
     public Slime(Player player){
         this.player = player;
+        this.slimeBar= new EnemyHp(this);
     }
     public void act()
     {
         if(player.alive == true){
             framehit++;
+            enemyAtk=player.atk;
             enemyX = getX();
             enemyY = getY();
             super.chasePlayer(enemyX, enemyY, player, speed);
@@ -41,12 +47,19 @@ public class Slime extends Enemy
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
             }
-            super.projectileCollision();
+            super.projectileCollision(enemyAtk,hp,slimeBar);
         }
         else{
             return;
         }
-        
     }
-    
+    @Override
+    public void takeDamage(int damage) {
+        this.hp -= damage; // Modify the instance's hp
+        slimeBar.hpUpdate(this.hp); // Update the bar with the instance's hp
+    }
+    @Override
+    public int getHp() {
+        return this.hp; // Return the instance's hp
+    }
 }
