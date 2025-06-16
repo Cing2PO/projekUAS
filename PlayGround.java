@@ -10,6 +10,7 @@ public class PlayGround extends MyWorld
     HpFull hpFull= new HpFull(100,5);
     Player player = new Player(hpFull);
     Weapon weapon = new Weapon(player);
+    SlimeKing slimeking = new SlimeKing(player);
     public static int enemykilled = 0;
     public boolean boss = false;
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
@@ -51,7 +52,6 @@ public class PlayGround extends MyWorld
             }
             if(enemykilled>=10){
                 boss = true;
-                SlimeKing slimeking = new SlimeKing(player);
                 addObject(slimeking,320,0);
                 addObject(slimeking.slimeBar,320, 0);
             }
