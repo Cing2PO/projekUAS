@@ -23,7 +23,7 @@ public class PlayGround extends MyWorld
         SlimeKing slimeking = new SlimeKing(player);
         EnemyHp bar= new EnemyHp(slimeking);
         addObject(slimeking,320,100);
-        addObject(slimeking.slimeBar,320, 100);
+        //addObject(slimeking.slimeBar,320, 100);
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
     }
@@ -32,18 +32,18 @@ public class PlayGround extends MyWorld
         spawntimer2 = spawntimer2 + 1 ;
         spawntimer3 = spawntimer3 + 1 ;
         spawntimer4 = spawntimer4 + 1 ;
-        if(spawntimer1 > 250+Greenfoot.getRandomNumber(500)){
-            spawntimer1 = enemySpawner(400,1,1,1,spawntimer1, slimeSprite);
-        }
-        if(spawntimer2 > 250+Greenfoot.getRandomNumber(500)){
-            spawntimer2 = enemySpawner(1,1,400,1,spawntimer2, slimeSprite);
-        }
-        if(spawntimer3 > 250+Greenfoot.getRandomNumber(500)){
-            spawntimer3 = enemySpawner(400,400,400,1,spawntimer3, slimeSprite);
-        }
-        if(spawntimer4 > 250+Greenfoot.getRandomNumber(500)){
-            spawntimer4 = enemySpawner(400,1,400,400,spawntimer4, slimeSprite);
-        }
+        //if(spawntimer1 > 250+Greenfoot.getRandomNumber(500)){
+            //spawntimer1 = enemySpawner(400,1,1,1,spawntimer1, slimeSprite);
+        //}
+        //if(spawntimer2 > 250+Greenfoot.getRandomNumber(500)){
+            //spawntimer2 = enemySpawner(1,1,400,1,spawntimer2, slimeSprite);
+        //}
+        //if(spawntimer3 > 250+Greenfoot.getRandomNumber(500)){
+            //spawntimer3 = enemySpawner(400,400,400,1,spawntimer3, slimeSprite);
+        //}
+        //if(spawntimer4 > 250+Greenfoot.getRandomNumber(500)){
+            //spawntimer4 = enemySpawner(400,1,400,400,spawntimer4, slimeSprite);
+        //}
     }
     public int enemySpawner(int x, int xstart,int y, int ystart,int spawntimer, GreenfootImage enemySprite){
         Slime slime = new Slime(player);

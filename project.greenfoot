@@ -75,11 +75,25 @@ dependency8.type=UsesDependency
 dependency9.from=EnemyHp
 dependency9.to=Enemy
 dependency9.type=UsesDependency
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 editor.fx.0.height=737
 editor.fx.0.width=814
 editor.fx.0.x=82
 editor.fx.0.y=41
 height=926
+=======
+=======
+>>>>>>> Stashed changes
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=734
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 package.numDependencies=24
 package.numTargets=16
 project.charset=UTF-8
@@ -92,7 +106,7 @@ publish.title=
 publish.url=
 readme.height=60
 readme.name=@README
-readme.width=49
+readme.width=48
 readme.x=10
 readme.y=10
 simulation.speed=45
@@ -127,7 +141,7 @@ target12.y=0
 target13.height=70
 target13.name=Enemy
 target13.showInterface=false
-target13.type=ClassTarget
+target13.type=AbstractTarget
 target13.width=120
 target13.x=0
 target13.y=0
@@ -209,7 +223,7 @@ target9.width=120
 target9.x=0
 target9.y=0
 version=3.1.0
-width=1550
+width=1294
 world.lastInstantiated=Homepage
 xPosition=0
 yPosition=0

@@ -21,23 +21,27 @@ public class Char extends Actor
         }
         return framecount;
     }
-    public int[] attackAnimate(String FramesArray[],int framecount,int scaling, int atkinterval,int hitpoint, Player player, int atkpoint){
+    public int attackAnimate(String FramesArray[],int framecount,int scaling,int hitpoint,int X, int Y,  Player player, int atkpoint, double distance){
         GreenfootImage Frames = new GreenfootImage(FramesArray[framecount]);
         Frames.scale(Frames.getWidth()+scaling,Frames.getHeight()+scaling);
         setImage(Frames);
-        int[] values = {framecount,atkinterval};
         if(framecount == FramesArray.length -1){ 
             framecount = 0 ;
-            atkinterval = 0;
         }
-        else if(framecount == hitpoint -1){
+        else if((framecount == hitpoint -1) && (distance <20)){
             framecount = framecount+1;
             player.getDamage(atkpoint);
         }
         else{
             framecount = framecount+1;
         }
-        return values;
+        return framecount;
+    }
+    public boolean attackCondition(String FramesArray[],int framecount,boolean move){
+        if(framecount == FramesArray.length -1){
+            move = true ;
+        }
+        return move;
     }
 
 }
