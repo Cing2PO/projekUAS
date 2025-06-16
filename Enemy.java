@@ -45,14 +45,14 @@ public class Enemy extends Char {
             removeTouching(Projectile.class);
             takeDamage(atk); // Call takeDamage on the instance
             bar.hpUpdate(this.hp); // Update the bar with the instance's hp
-
-            if (this.hp <= 0) {// Check the instance's hp
-                PlayGround.enemykilled++;
+        }
+    }
+    
+    public void death(EnemyHp bar){
+        PlayGround.enemykilled++;
                 if (getWorld() != null) {
                 getWorld().removeObject(bar); // Remove HP bar first
-                getWorld().removeObject(this); // Then remove the enemy
-                }
+                getWorld().removeObject(this);
             }
-        }
     }
 }

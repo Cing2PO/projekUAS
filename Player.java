@@ -117,7 +117,12 @@ public class Player extends Char
     private void death(){
         alive = false;
         getWorld().removeObject(bar);
-        getImage().setTransparency(0);
+        getImage().setTransparency(0);LoseText lose = new LoseText();
+        Restart restart = new Restart();
+        Exit exit = new Exit();
+        getWorld().addObject(lose, 320,200);
+        getWorld().addObject(restart, 200,400);
+        getWorld().addObject(exit, 400,400);
     }
     
     

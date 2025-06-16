@@ -48,5 +48,8 @@ public class Slime extends Enemy
         else{
             return;
         }
+        if(hp <= 0){
+            super.death(slimeBar);
+        }
     }
 }
