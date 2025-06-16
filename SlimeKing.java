@@ -64,14 +64,15 @@ public class SlimeKing extends Enemy
                 if(animationCounter % 6 == 0){
                     framecount = super.Animate(RunAnimation,framecount,scaling);
                 }
-            }
+            };
+            
             if(framehit  >= 200){
                 framehit =  super.collisionPlayer(framehit, player, atkpoint);
-            }
+            };
             if(this.hp <= 0){ // Check this.hp
                 death();
                 return; // Important: Add return after calling death()
-            }
+            };
             super.projectileCollision(enemyAtk,slimeBar); // Removed hp parameter
         }
         else{
@@ -80,13 +81,10 @@ public class SlimeKing extends Enemy
     }
 
     private void death(){
-        //win();
+        win();
         getWorld().removeObject(slimeBar);
         getWorld().removeObject(this);
-        Greenfoot.setWorld(new Win());
-        Greenfoot.stop();
     }
-
     public void attack(){
         if(animationCounter % 6 == 0){
             int [] val = super.attackAnimate(RunAnimation,framecount,scaling, atkInterval,hitpoint, player, atkpoint);

@@ -14,5 +14,4 @@ public class ButtonPlay extends Actor
             Greenfoot.setWorld(new PlayGround());
         }
     }
-    
 }
