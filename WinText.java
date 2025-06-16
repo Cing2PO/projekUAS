@@ -1,17 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class WinText here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*;
 public class WinText extends Actor
 {
-    /**
-     * Act - do whatever the WinText wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public WinText(){
+        GreenfootImage lose = new GreenfootImage("Win.png");
+        lose.scale(lose.getWidth()+80,lose.getHeight()+80);
+        setImage(lose);
+    }
     public void act()
     {
         // Add your action code here.
