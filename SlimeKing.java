@@ -42,7 +42,7 @@ public class SlimeKing extends Enemy
     GreenfootImage SlimeKingSprite = new GreenfootImage("Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png");
     public SlimeKing(Player player){
         this.player = player;
-        this.hp = 200; // Initialize HP here
+        this.hp = 20; // Initialize HP here
         SlimeKingSprite.scale(SlimeKingSprite.getWidth()+200,SlimeKingSprite.getHeight()+200);
         setImage(SlimeKingSprite);
         this.slimeBar = new EnemyHp(this);
@@ -70,7 +70,7 @@ public class SlimeKing extends Enemy
             }
             if(this.hp <= 0){ // Check this.hp
                 death();
-                return;
+                return; // Important: Add return after calling death()
             }
             super.projectileCollision(enemyAtk,slimeBar); // Removed hp parameter
         }
@@ -80,9 +80,11 @@ public class SlimeKing extends Enemy
     }
 
     private void death(){
-        win();
+        //win();
         getWorld().removeObject(slimeBar);
         getWorld().removeObject(this);
+        Greenfoot.setWorld(new Win());
+        Greenfoot.stop();
     }
 
     public void attack(){
@@ -92,6 +94,7 @@ public class SlimeKing extends Enemy
             atkInterval = val[1];
         }
     }
+    
     public void win(){
         Greenfoot.setWorld(new Win());
     }
