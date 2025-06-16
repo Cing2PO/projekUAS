@@ -117,7 +117,7 @@ public class Player extends Char
     private void death(){
         alive = false;
         getWorld().removeObject(bar);
-        getWorld().removeObject(this);
+        getImage().setTransparency(0);
     }
     
     

@@ -20,13 +20,6 @@ public class ScoreBoard extends Actor
     }
     public void act()
     {
-    }
-    public void addScore(int score){
-        this.score += score;
-        updateImage();
-    }
-    public void setScore(int score){
-        this.score = score;
         updateImage();
     }
     public void updateImage(){
@@ -34,7 +27,7 @@ public class ScoreBoard extends Actor
         image.setColor(Color.WHITE);
         Font font = new Font("Arial",true, false, 14);
         image.setFont(font);
-        image.drawString("Score :" + this.score + "/" + 20, 25, 45);
+        image.drawString("Score :" + PlayGround.enemykilled, 25, 45);
         setImage(image);
     }
 }

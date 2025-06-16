@@ -14,6 +14,7 @@ public class PlayGround extends MyWorld
     public boolean boss = false;
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
+    ScoreBoard scoreBoard = new ScoreBoard();
     public PlayGround()
     {     
         GreenfootImage playBackgorund = new GreenfootImage("Map\\Playground.png");
@@ -24,8 +25,10 @@ public class PlayGround extends MyWorld
         addObject(weapon,200,210);
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
+        addObject(scoreBoard, 575, 50);
     }
     public void act(){
+        SlimeKing slimeking = new SlimeKing(player);
         if(slimeking.hp<=0){
             Greenfoot.setWorld(new Win());
         }
@@ -51,7 +54,6 @@ public class PlayGround extends MyWorld
             }
             if(enemykilled>=10){
                 boss = true;
-                SlimeKing slimeking = new SlimeKing(player);
                 addObject(slimeking,320,0);
                 addObject(slimeking.slimeBar,320, 0);
             }
