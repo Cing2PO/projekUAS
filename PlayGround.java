@@ -10,6 +10,7 @@ public class PlayGround extends MyWorld
     HpFull hpFull= new HpFull(100,5);
     Player player = new Player(hpFull);
     Weapon weapon = new Weapon(player);
+    SlimeKing slimeking = new SlimeKing(player);
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
     public PlayGround()
@@ -20,7 +21,6 @@ public class PlayGround extends MyWorld
         addObject(player, 320, 320);
         player.setImage(playerSprite);
         addObject(weapon,200,210);
-        SlimeKing slimeking = new SlimeKing(player);
         addObject(slimeking,320,100);
         addObject(slimeking.slimeBar,320, 100);
         addObject(hpEmpty,70,20);
@@ -42,6 +42,9 @@ public class PlayGround extends MyWorld
         }
         if(spawntimer4 > 250+Greenfoot.getRandomNumber(500)){
             spawntimer4 = enemySpawner(400,1,400,400,spawntimer4, slimeSprite);
+        }
+        if(slimeking.hp<=0){
+            Greenfoot.setWorld(new Win());
         }
     }
     public int enemySpawner(int x, int xstart,int y, int ystart,int spawntimer, GreenfootImage enemySprite){
