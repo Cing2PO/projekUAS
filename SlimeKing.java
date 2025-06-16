@@ -50,7 +50,7 @@ public class SlimeKing extends Enemy
             if(hp <= 0){
                 death();
             }
-            super.projectileCollision(enemyAtk,hp,slimeBar);
+            super.projectileCollision(enemyAtk,this.hp,slimeBar);
         }
         else{
             return;
@@ -61,12 +61,10 @@ public class SlimeKing extends Enemy
         getWorld().removeObject(slimeBar);
         getWorld().removeObject(this);
     }
-    @Override
     public void takeDamage(int damage) {
         this.hp -= damage; // Modify the instance's hp
         slimeBar.hpUpdate(this.hp); // Update the bar with the instance's hp
     }
-    @Override
     public int getHp() {
         return this.hp; // Return the instance's hp
     }

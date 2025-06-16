@@ -8,11 +8,7 @@ public class EnemyHp extends HpBar
     public void act()
     {
         if(enemy.getWorld()!=null){
-            int hp=getEnemyHp();
-            if(hp!=0){
-                FollowEnemy();
-                hpUpdate(hp);
-            }
+            FollowEnemy();
         }else{
             getWorld().removeObject(this);
         }
@@ -31,9 +27,6 @@ public class EnemyHp extends HpBar
         setImage(hpBar);
     }
     public void FollowEnemy(){
-        setLocation(enemy.getX()-20, enemy.getY());
-    }
-     private int getEnemyHp() {
-        return enemy.getHp(); // Now calling the abstract getHp() from Enemy
+        setLocation(enemy.getX(), enemy.getY()-20);
     }
 }

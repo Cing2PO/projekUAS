@@ -1,8 +1,6 @@
 import greenfoot.*;
-public abstract class Enemy extends Char
+public class Enemy extends Char
 {
-    public abstract void takeDamage(int damage); // This will be implemented by subclasses
-    public abstract int getHp(); // This will be implemented by subclasses
     public void chasePlayer(int enemyX, int enemyY, Player player, int speed){
         if(enemyX >= player.playerX){
             if(enemyY >=player.playerY){
@@ -30,11 +28,18 @@ public abstract class Enemy extends Char
         }
         return framehit;
     }
+    public void takeDamage(int damage,int hp, EnemyHp slimeBar){
+        hp -= damage; // Modify the instance's hp
+        slimeBar.hpUpdate(hp);
+    }
+    public int getHp(int hp){
+        return hp;
+    }
     public void projectileCollision(int hp, int atk,EnemyHp bar){
         if(isTouching(Projectile.class)){
-            if (getHp() > 0) {
+            if (getHp(hp) > 0) {
                 removeTouching(Projectile.class);
-                takeDamage(atk);
+                takeDamage(atk,hp,bar);
             }else{
                 if (getWorld() != null) { 
                         getWorld().removeObject(this);
