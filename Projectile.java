@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Projectile extends Actor
 {
-    GreenfootImage bullet = new GreenfootImage("images\\Bullets\\PistolAmmoSmall.png");
+    GreenfootImage projectile = new GreenfootImage("images\\Bullets\\RifleAmmoBig.png");
     private int speed;
     public int atk=10;
     public Projectile(int speed){
         this.speed = speed;
-        bullet.scale(bullet.getWidth() + 10, bullet.getHeight()+10);
-        setImage(bullet);
+        projectile.scale(projectile.getWidth() + 10, projectile.getHeight()+10);
+        setImage(projectile);
     }
     public void act()
     {

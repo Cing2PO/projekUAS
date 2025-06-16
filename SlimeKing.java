@@ -10,7 +10,7 @@ public class SlimeKing extends Enemy
     public boolean alive=true;
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
-    public int speed = 1;
+    public int speed = 2;
     public int atkpoint = 10; 
     public int atkInterval = 200;
     public int hitpoint = 4;
@@ -39,9 +39,10 @@ public class SlimeKing extends Enemy
         "Animasi\\Slimeking\\\\Slime2_Attack\\10_Slime2_Attack_full.png",
     };
     GreenfootImage SlimeKingSprite = new GreenfootImage("Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png");
+    GreenfootSound deathsfx = new GreenfootSound("sfx\\slime\\slimekingdet.mp3");
     public SlimeKing(Player player){
         this.player = player;
-        this.hp = 20; // Initialize HP here
+        this.hp = 200; 
         SlimeKingSprite.scale(SlimeKingSprite.getWidth()+200,SlimeKingSprite.getHeight()+200);
         setImage(SlimeKingSprite);
         this.slimeBar = new EnemyHp(this);
@@ -59,7 +60,7 @@ public class SlimeKing extends Enemy
         if(hp <= 0){
             //GameManager.battle_music.stop();
             PlayGround playground = new PlayGround();
-            super.death(slimeBar);
+            super.death(slimeBar, deathsfx);
         }
         else if(player.alive == true&&alive==true){
             if(move == false){

@@ -3,15 +3,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Weapon extends Actor
 {
     private Player player;
-    final GreenfootImage weapon = new GreenfootImage("images\\Guns\\AK47.png");
-    final GreenfootImage bullet = new GreenfootImage("images\\Bullets\\PistolAmmoSmall.png");
+    final GreenfootImage Bow = new GreenfootImage("images\\Weapon\\Bow01.png");
+    GreenfootSound shotsfx = new GreenfootSound("sfx\\bow\\arrowsfx.mp3");
     boolean spreadMode = false;
     int cooldown = 0;
     int straightShotsFired = 0;
-    final int cooldownTime = 30;
+    final int cooldownTime = 50;
     public Weapon(Player player){
         this.player = player;
-        setImage(weapon);
+        setImage(Bow);
     }
     public void act()
     {
@@ -55,10 +55,11 @@ public class Weapon extends Actor
         getWorld().addObject(p, getX(), getY());
         p.setRotation(getRotation());
         straightShotsFired++;
-        if(straightShotsFired >= 3){
-            cooldown = cooldownTime;
-            straightShotsFired = 0;
-        }
+        shotsfx.play();
+        cooldown = cooldownTime;
+        //if(straightShotsFired >= 3){
+            //cooldown = cooldownTime;
+            //straightShotsFired = 0;
     }
     private void shootSpread(){
         for (int angle : new int[] {-10, 0, 10}) {

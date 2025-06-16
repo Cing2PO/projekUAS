@@ -48,9 +48,10 @@ public class Enemy extends Char {
         }
     }
     
-    public void death(EnemyHp bar){
+    public void death(EnemyHp bar,GreenfootSound sfx){
         PlayGround.enemykilled++;
-                if (getWorld() != null) {
+        sfx.play();
+            if (getWorld() != null) {
                 getWorld().removeObject(bar); // Remove HP bar first
                 getWorld().removeObject(this);
             }

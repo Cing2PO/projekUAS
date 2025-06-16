@@ -32,7 +32,7 @@ public class Slime extends Enemy
         "Animasi\\slime\\Slime1_Death_full\\08_Slime1_Death_full.png",
         "Animasi\\slime\\Slime1_Death_full\\09_Slime1_Death_full.png",
     };
-        
+    GreenfootSound deathsfx = new GreenfootSound("sfx\\slime\\slimedet.mp3");
 
     public Slime(Player player){
         this.player = player;
@@ -49,7 +49,7 @@ public class Slime extends Enemy
                 alive = super.deathCondition(DeathAnimation, framecount, alive);
             }
             else if(alive == false){
-                super.death(slimeBar);
+                super.death(slimeBar,deathsfx);
             }
         }
         else if(player.alive == true && move == true){

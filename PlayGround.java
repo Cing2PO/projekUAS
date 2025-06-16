@@ -41,19 +41,19 @@ public class PlayGround extends MyWorld
             spawntimer2 = spawntimer2 + 1 ;
             spawntimer3 = spawntimer3 + 1 ;
             spawntimer4 = spawntimer4 + 1 ;
-            if(spawntimer1 > 250+Greenfoot.getRandomNumber(500)){
+            if(spawntimer1 > 250+Greenfoot.getRandomNumber(600)){
                 spawntimer1 = enemySpawner(400,1,1,1,spawntimer1, slimeSprite);
             }
-            if(spawntimer2 > 250+Greenfoot.getRandomNumber(500)){
+            if(spawntimer2 > 250+Greenfoot.getRandomNumber(600)){
                 spawntimer2 = enemySpawner(1,1,400,1,spawntimer2, slimeSprite);
             }
-            if(spawntimer3 > 250+Greenfoot.getRandomNumber(500)){
+            if(spawntimer3 > 250+Greenfoot.getRandomNumber(600)){
                 spawntimer3 = enemySpawner(400,400,400,1,spawntimer3, slimeSprite);
             }
-            if(spawntimer4 > 250+Greenfoot.getRandomNumber(500)){
+            if(spawntimer4 > 250+Greenfoot.getRandomNumber(600)){
                 spawntimer4 = enemySpawner(400,1,400,400,spawntimer4, slimeSprite);
             }
-            if(enemykilled>=10){
+            if(enemykilled>=50){
                 boss = true;
                 slimeking = new SlimeKing(player);
                 addObject(slimeking,320,0);
