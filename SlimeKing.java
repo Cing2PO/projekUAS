@@ -40,7 +40,6 @@ public class SlimeKing extends Enemy
         "Animasi\\Slimeking\\\\Slime2_Attack\\10_Slime2_Attack_full.png",
     };
     GreenfootImage SlimeKingSprite = new GreenfootImage("Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png");
-
     public SlimeKing(Player player){
         this.player = player;
         this.hp = 200; // Initialize HP here
@@ -71,6 +70,7 @@ public class SlimeKing extends Enemy
             }
             if(this.hp <= 0){ // Check this.hp
                 death();
+                return;
             }
             super.projectileCollision(enemyAtk,slimeBar); // Removed hp parameter
         }
@@ -80,8 +80,7 @@ public class SlimeKing extends Enemy
     }
 
     private void death(){
-        // The removal is now handled in projectileCollision in Enemy.java
-        // You might still want to add specific death animation logic here if any.
+        win();
         getWorld().removeObject(slimeBar);
         getWorld().removeObject(this);
     }
@@ -92,5 +91,8 @@ public class SlimeKing extends Enemy
             framecount = val[0];
             atkInterval = val[1];
         }
+    }
+    public void win(){
+        Greenfoot.setWorld(new Win());
     }
 }
