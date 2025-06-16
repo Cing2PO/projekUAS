@@ -18,6 +18,7 @@ public class SlimeKing extends Enemy
     public Slime slime; 
     public EnemyHp slimeBar;
     public Projectile bullet;
+    GameManager manage = new GameManager();
     String[] RunAnimation = {"Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\01_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\02_Slime2_Run_full.png",
@@ -56,7 +57,10 @@ public class SlimeKing extends Enemy
         double distance = distance(player.playerX,player.playerY);
         move = distanceCheck(distance,move,attack);
         if(hp <= 0){
-            death();
+            manage.stopsound(Start.play);
+            manage.musicplay(Homepage.home);
+            PlayGround playground = new PlayGround();
+            super.death(slimeBar);
         }
         else if(player.alive == true&&alive==true){
             if(move == false){
@@ -87,10 +91,6 @@ public class SlimeKing extends Enemy
     private double distance(int playerX, int playerY){
          double distance = Math.sqrt(Math.pow(playerX - enemyX, 2) + Math.pow(playerY - enemyY, 2));
          return distance;
-    }                                   
-    private void death(){
-        getWorld().removeObject(slimeBar);
-        getWorld().removeObject(this);
-    }
+    }                                 
 }
     

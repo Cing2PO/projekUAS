@@ -11,7 +11,7 @@ public class PlayGround extends MyWorld
     Player player = new Player(hpFull);
     Weapon weapon = new Weapon(player);
     public static int enemykilled = 0;
-    public boolean boss = false;
+    public static boolean boss = false;
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
     ScoreBoard scoreBoard = new ScoreBoard();
@@ -78,5 +78,9 @@ public class PlayGround extends MyWorld
     }
     public void enemykillcounter(){
         PlayGround.enemykilled++;
+    }
+    public static void resetCount(){
+        enemykilled=0;
+        boss=false;
     }
 }
