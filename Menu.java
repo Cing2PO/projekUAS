@@ -17,6 +17,8 @@ public class Menu extends Button
             }
         if (Greenfoot.mouseClicked(this)){
             PlayGround.resetCount();
+            GameManager.winning_music.stop();
+            GameManager.menu_music.playLoop();
             Greenfoot.setWorld(new Homepage());
         }
     }

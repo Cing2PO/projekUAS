@@ -4,7 +4,7 @@ public class Slime extends Enemy
 {
     public int framecount = 0;
     private int framehit = 200;
-    private int scaling = 50;
+    private int scaling = 20;
     public boolean move = false;
     public boolean live; // This variable seems redundant, can be removed
     public int animationCounter=0;

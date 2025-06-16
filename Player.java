@@ -116,6 +116,8 @@ public class Player extends Char
     }
     private void death(){
         alive = false;
+        GameManager.battle_music.stop();
+        GameManager.gameover_music.playLoop();
         getWorld().removeObject(bar);
         getImage().setTransparency(0);LoseText lose = new LoseText();
         Restart restart = new Restart();

@@ -2,7 +2,6 @@ import greenfoot.*;
 
 public class Homepage extends MyWorld
 {
-    public static GreenfootSound home = new GreenfootSound("Home.mp3");
     GameManager manage = new GameManager();
     public Homepage()
     {    
@@ -13,6 +12,6 @@ public class Homepage extends MyWorld
         addObject(start,320,320);
     }
     public void started(){
-        manage.musicplay(home);
+        manage.musicplay(manage.menu_music);
     }
 }

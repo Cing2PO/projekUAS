@@ -4,7 +4,7 @@ public class SlimeKing extends Enemy
 {
     public int framecount = 0;
     private int framehit = 200;
-    private int scaling = 200;
+    private int scaling = 100;
     public boolean move = true;
     public boolean attack = false;
     public boolean alive=true;
@@ -57,8 +57,7 @@ public class SlimeKing extends Enemy
         double distance = distance(player.playerX,player.playerY);
         move = distanceCheck(distance,move,attack);
         if(hp <= 0){
-            manage.stopsound(Start.play);
-            manage.musicplay(Homepage.home);
+            //GameManager.battle_music.stop();
             PlayGround playground = new PlayGround();
             super.death(slimeBar);
         }

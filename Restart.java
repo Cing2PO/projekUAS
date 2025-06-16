@@ -16,6 +16,9 @@ public class Restart extends Button
                 framecount = super.Animate(Animation,framecount,scaling);
             }
         if (Greenfoot.mouseClicked(this)){
+            GameManager.winning_music.stop();
+            GameManager.gameover_music.stop();
+            GameManager.battle_music.playLoop();
             PlayGround.resetCount();
             Greenfoot.setWorld(new PlayGround());
         }

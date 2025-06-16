@@ -10,7 +10,6 @@ public class Start extends Button
     };
     public int scaling = 80;
     GameManager manage = new GameManager();
-    public static GreenfootSound play = new GreenfootSound("PlayGround.mp3");
     public void act()
     {
         Homepage homepage = new Homepage();
@@ -20,8 +19,8 @@ public class Start extends Button
             }
         if (Greenfoot.mouseClicked(this)){
             PlayGround.resetCount();
-            manage.stopsound(Homepage.home);
-            manage.musicplay(Start.play);
+            manage.stopsound(manage.menu_music);
+            manage.musicplay(manage.battle_music);
             Greenfoot.setWorld(new PlayGround());
         }
     }
