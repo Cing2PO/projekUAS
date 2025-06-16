@@ -30,11 +30,18 @@ public class Char extends Actor
         }
         return framecount;
     }
+
     public boolean attackCondition(String FramesArray[],int framecount,boolean move){
         if(framecount == FramesArray.length -1){
             move = true ;
         }
         return move;
+    }
+    public boolean deathCondition(String FramesArray[],int framecount,boolean alive){
+        if(framecount == FramesArray.length -1){
+            alive = false ;
+        }
+        return alive;
     }
 
 }

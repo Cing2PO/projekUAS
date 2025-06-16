@@ -5,8 +5,8 @@ public class Slime extends Enemy
     public int framecount = 0;
     private int framehit = 200;
     private int scaling = 20;
-    public boolean move = false;
-    public boolean live; // This variable seems redundant, can be removed
+    public boolean move = true;
+    public boolean alive = true; // This variable seems redundant, can be removed
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
@@ -21,6 +21,18 @@ public class Slime extends Enemy
         "Animasi\\slime\\Slime1_Idle_full\\03_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\04_Slime1_Idle_full.png",
         "Animasi\\slime\\Slime1_Idle_full\\05_Slime1_Idle_full.png"};
+    String[] DeathAnimation = {"Animasi\\slime\\Slime1_Death_full\\00_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\01_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\02_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\03_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\04_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\05_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\06_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\07_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\08_Slime1_Death_full.png",
+        "Animasi\\slime\\Slime1_Death_full\\09_Slime1_Death_full.png",
+    };
+        
 
     public Slime(Player player){
         this.player = player;
@@ -30,7 +42,17 @@ public class Slime extends Enemy
 
     public void act()
     {
-        if(player.alive == true){
+        if(hp <= 0){
+            if(alive == true){
+                move = false;
+                framecount = super.Animate(DeathAnimation,framecount, scaling);
+                alive = super.deathCondition(DeathAnimation, framecount, alive);
+            }
+            else if(alive == false){
+                super.death(slimeBar);
+            }
+        }
+        else if(player.alive == true && move == true){
             framehit++;
             enemyAtk=player.atk;
             enemyX = getX();
@@ -47,9 +69,6 @@ public class Slime extends Enemy
         }
         else{
             return;
-        }
-        if(hp <= 0){
-            super.death(slimeBar);
         }
     }
 }
