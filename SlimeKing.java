@@ -11,8 +11,7 @@ public class SlimeKing extends Enemy
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
-    public int atkpoint = 10;
-    public int hp = 200; 
+    public int atkpoint = 10; 
     public int atkInterval = 200;
     public int hitpoint = 4;
     public Player player;
@@ -41,7 +40,7 @@ public class SlimeKing extends Enemy
     GreenfootImage SlimeKingSprite = new GreenfootImage("Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png");
     public SlimeKing(Player player){
         this.player = player;
-        this.hp = 20; // Initialize HP here
+        this.hp = 200; // Initialize HP here
         SlimeKingSprite.scale(SlimeKingSprite.getWidth()+200,SlimeKingSprite.getHeight()+200);
         setImage(SlimeKingSprite);
         this.slimeBar = new EnemyHp(this);
@@ -66,29 +65,17 @@ public class SlimeKing extends Enemy
                     framecount = super.attackAnimate(AttackAnimation, framecount, scaling, hitpoint,enemyX,enemyY, player, atkpoint, distance);
                     move = super.attackCondition(AttackAnimation, framecount, move);
                 }
-<<<<<<< HEAD
-            };
-            
-            if(framehit  >= 200){
-                framehit =  super.collisionPlayer(framehit, player, atkpoint);
-            };
-            if(this.hp <= 0){ // Check this.hp
-                death();
-                return; // Important: Add return after calling death()
-            };
-            super.projectileCollision(enemyAtk,slimeBar); // Removed hp parameter
-=======
             }
             else if(move == true){
             super.chasePlayer(enemyX, enemyY, player, speed);
             if(animationCounter % 6 == 0){
                 framecount = super.Animate(RunAnimation,framecount,scaling);
-                }
             }
->>>>>>> 038a73ebbceafdca8fb7b5d6df7da6a7422f32ac
+            super.projectileCollision(player.atk, slimeBar);
         }
         else{
             return;
+            }
         }
     }
     private boolean distanceCheck(double distance, boolean move, boolean attack){
@@ -106,17 +93,6 @@ public class SlimeKing extends Enemy
         getWorld().removeObject(slimeBar);
         getWorld().removeObject(this);
     }
-<<<<<<< HEAD
-    public void attack(){
-        if(animationCounter % 6 == 0){
-            int [] val = super.attackAnimate(RunAnimation,framecount,scaling, atkInterval,hitpoint, player, atkpoint);
-            framecount = val[0];
-            atkInterval = val[1];
-        }
-    }
-=======
->>>>>>> 038a73ebbceafdca8fb7b5d6df7da6a7422f32ac
-    
     public void win(){
         Greenfoot.setWorld(new Win());
     }

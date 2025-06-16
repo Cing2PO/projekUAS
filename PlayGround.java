@@ -21,9 +21,8 @@ public class PlayGround extends MyWorld
         player.setImage(playerSprite);
         addObject(weapon,200,210);
         SlimeKing slimeking = new SlimeKing(player);
-        EnemyHp bar= new EnemyHp(slimeking);
         addObject(slimeking,320,100);
-        //addObject(slimeking.slimeBar,320, 100);
+        addObject(slimeking.slimeBar,320, 100);
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
     }
