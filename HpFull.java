@@ -13,9 +13,9 @@ public class HpFull extends HpBar
     }
     public GreenfootImage hpUpdate(int hp){
          GreenfootImage image= getImage(); 
+        int width= image.getWidth();
+        int hpminus= (int)width-hp;
         if (hp!=0){
-            int width= image.getWidth();
-            int hpminus= (int)width-hp;
             image.scale(image.getWidth()-hpminus,image.getHeight());
         }else{
              image.setTransparency(0);
