@@ -1,7 +1,8 @@
 import greenfoot.*;
 
 public class Enemy extends Char {
-    protected int hp; // Make hp a protected field so subclasses can access it
+    protected int hp;// Make hp a protected field so subclasses can access it
+    PlayGround ground = new PlayGround();
 
     public void chasePlayer(int enemyX, int enemyY, Player player, int speed) {
         if (enemyX >= player.playerX) {
@@ -45,10 +46,11 @@ public class Enemy extends Char {
             takeDamage(atk); // Call takeDamage on the instance
             bar.hpUpdate(this.hp); // Update the bar with the instance's hp
 
-            if (this.hp <= 0) { // Check the instance's hp
+            if (this.hp <= 0) {// Check the instance's hp
+                PlayGround.enemykilled++;
                 if (getWorld() != null) {
-                    getWorld().removeObject(bar); // Remove HP bar first
-                    getWorld().removeObject(this); // Then remove the enemy
+                getWorld().removeObject(bar); // Remove HP bar first
+                getWorld().removeObject(this); // Then remove the enemy
                 }
             }
         }
