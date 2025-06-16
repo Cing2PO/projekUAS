@@ -12,11 +12,13 @@ public class SlimeKing extends Enemy
     public int speed = 1;
     public int atkpoint = 10;
     public int hp=200; 
+    public int atkInterval = 200;
+    public int hitpoint = 8;
     public Player player;
     public Slime slime;
     public EnemyHp slimeBar;
     public Projectile bullet;
-    String[] IdleAnimation = {"Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png",
+    String[] RunAnimation = {"Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\01_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\02_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\03_Slime2_Run_full.png",
@@ -24,6 +26,18 @@ public class SlimeKing extends Enemy
         "Animasi\\Slimeking\\\\Slime2_Run\\05_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\06_Slime2_Run_full.png",
         "Animasi\\Slimeking\\\\Slime2_Run\\07_Slime2_Run_full.png",
+    };
+    String[] AttackAnimation = {"Animasi\\Slimeking\\\\Slime2_Attack\\00_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\01_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\02_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\03_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\04_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\05_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\06_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\07_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\08_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\09_Slime2_Attack_full.png",
+        "Animasi\\Slimeking\\\\Slime2_Attack\\10_Slime2_Attack_full.png",
     };
     GreenfootImage SlimeKingSprite = new GreenfootImage("Animasi\\Slimeking\\\\Slime2_Run\\00_Slime2_Run_full.png");
     public SlimeKing(Player player){
@@ -41,8 +55,13 @@ public class SlimeKing extends Enemy
             enemyY = getY();
             super.chasePlayer(enemyX, enemyY, player, speed);
             animationCounter = animationCounter +1;
-            if(animationCounter % 6 == 0){
-                framecount = super.Animate(IdleAnimation,framecount,scaling);
+            if(getX()+10<=player.playerX && getY()+10<=player.playerY && (atkInterval <= 200)){
+                attack();
+            }
+            else{
+                if(animationCounter % 6 == 0){
+                    framecount = super.Animate(RunAnimation,framecount,scaling);
+                }
             }
             if(framehit  >= 200){
             framehit =  super.collisionPlayer(framehit, player, atkpoint);
@@ -67,5 +86,13 @@ public class SlimeKing extends Enemy
     }
     public int getHp() {
         return this.hp; // Return the instance's hp
+    }
+    
+    public void attack(){
+        if(animationCounter % 6 == 0){
+            int [] val = super.attackAnimate(RunAnimation,framecount,scaling, atkInterval,hitpoint, player, atkpoint);
+            framecount = val[0];
+            atkInterval = val[1];
+        }
     }
 }
