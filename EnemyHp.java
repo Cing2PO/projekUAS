@@ -42,4 +42,11 @@ public class EnemyHp extends HpBar
     public void FollowEnemy(){
         setLocation(enemy.getX(), enemy.getY()-20);
     }
+<<<<<<< Updated upstream
 }
+=======
+     private int getEnemyHp() {
+        return enemy.getHp(); 
+    }
+}
+>>>>>>> Stashed changes

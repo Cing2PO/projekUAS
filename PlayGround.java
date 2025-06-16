@@ -23,7 +23,7 @@ public class PlayGround extends MyWorld
         SlimeKing slimeking = new SlimeKing(player);
         EnemyHp bar= new EnemyHp(slimeking);
         addObject(slimeking,320,100);
-        addObject(slimeking.slimeBar,320, 100);
+        //addObject(slimeking.slimeBar,320, 100);
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
     }
