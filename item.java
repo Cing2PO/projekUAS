@@ -60,11 +60,11 @@ public class item extends powerup
                 GameManager.gamestatus = true;
                 PlayGround.itempop = false;
             case 3:
-                Player.hp= Player.hp*2;
+                Player.hp= Player.hp+2;
                 GameManager.gamestatus = true;
                 PlayGround.itempop = false;
             case 4:
-                Player.hp = Player.hp + 50;
+                Player.hp = Player.hp + 5;
                 GameManager.gamestatus = true;
                 PlayGround.itempop = false;
             case 5:
@@ -72,7 +72,7 @@ public class item extends powerup
                 GameManager.gamestatus = true;                
                 PlayGround.itempop = false;
             case 6:
-                Player.hp = Player.hp*2;
+                Player.hp = Player.hp+2;
                 GameManager.gamestatus = true;                
                 PlayGround.itempop = false;
             case 7:
@@ -80,7 +80,7 @@ public class item extends powerup
                 GameManager.gamestatus = true;
                 PlayGround.itempop = false;
             case 8:
-                Player.hp = Player.hp*2;
+                Player.hp = Player.hp+2;
                 GameManager.gamestatus = true;
                 PlayGround.itempop = false;
                 

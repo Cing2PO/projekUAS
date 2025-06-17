@@ -9,7 +9,7 @@ public class Player extends Char
     public boolean move = false;
     public int animationCounter=0;
     public static int speed = 3;
-    public static int hp = 100000;
+    public static int hp = 100;
     public static int atk=100;
     public static int diagonalspeed = speed/2;
     public static int playerX,playerY;
