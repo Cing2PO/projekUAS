@@ -7,6 +7,7 @@ public class GameManager extends Actor {
     public static GreenfootSound battle_music = new GreenfootSound("PlayGround.mp3");
     public static GreenfootSound winning_music = new GreenfootSound("winning.mp3");
     public static GreenfootSound gameover_music = new GreenfootSound("gameover.mp3");
+    public static GreenfootSound boss1_music = new GreenfootSound("slimeboss.mp3");
     public static boolean gamestatus = true;
     
     public GameManager(){

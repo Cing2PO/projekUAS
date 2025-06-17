@@ -45,7 +45,7 @@ public class PlayGround extends MyWorld
     }
     public void act(){
         if (boss && slimeking != null && slimeking.hp <= 0) {
-            manage.stopsound(manage.battle_music);
+            manage.stopsound(manage.boss1_music);
             manage.musicplay(manage.winning_music);
             Greenfoot.setWorld(new Win());
             return;
@@ -84,6 +84,8 @@ public class PlayGround extends MyWorld
             }
             if(enemykilled>=30){
                 boss = true;
+                manage.stopsound(GameManager.battle_music);
+                GameManager.boss1_music.playLoop();
                 slimeking = new SlimeKing(player);
                 addObject(slimeking,320,0);
                 addObject(slimeking.slimeBar,320, 0);
