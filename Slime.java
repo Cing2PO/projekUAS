@@ -10,7 +10,7 @@ public class Slime extends Enemy
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
     public int speed = 1;
-    public int atkpoint = 10;
+    public static int atkpoint = 5;
     public Player player;
     public Slime slime; // This variable seems redundant
     public EnemyHp slimeBar;
@@ -52,7 +52,7 @@ public class Slime extends Enemy
                 super.death(slimeBar,deathsfx);
             }
         }
-        else if(player.alive == true && move == true){
+        else if(player.alive == true && move == true && GameManager.gamestatus == true){
             framehit++;
             enemyAtk=player.atk;
             enemyX = getX();

@@ -8,10 +8,10 @@ public class Player extends Char
     public boolean alive;
     public boolean move = false;
     public int animationCounter=0;
-    public int speed = 3;
-    public int hp = 100;
-    public int atk=10;
-    public int diagonalspeed = speed/2;
+    public static int speed = 3;
+    public static int hp = 100000;
+    public static int atk=100;
+    public static int diagonalspeed = speed/2;
     public static int playerX,playerY;
     HpFull bar;
     String[] IdleAnimation = {"Animasi\\player1\\idle\\idle_down\\00_idle_down.png","Animasi\\player1\\idle\\idle_down\\01_idle_down.png","Animasi\\player1\\idle\\idle_down\\02_idle_down.png","Animasi\\player1\\idle\\idle_down\\03_idle_down.png","Animasi\\player1\\idle\\idle_down\\04_idle_down.png","Animasi\\player1\\idle\\idle_down\\05_idle_down.png","Animasi\\player1\\idle\\idle_down\\06_idle_down.png","Animasi\\player1\\idle\\idle_down\\07_idle_down.png"};
@@ -119,7 +119,8 @@ public class Player extends Char
         GameManager.battle_music.stop();
         GameManager.gameover_music.playLoop();
         getWorld().removeObject(bar);
-        getImage().setTransparency(0);LoseText lose = new LoseText();
+        getImage().setTransparency(0);
+        LoseText lose = new LoseText();
         Restart restart = new Restart();
         Exit exit = new Exit();
         getWorld().addObject(lose, 320,200);

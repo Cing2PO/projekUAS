@@ -8,7 +8,7 @@ public class Weapon extends Actor
     boolean spreadMode = false;
     int cooldown = 0;
     int straightShotsFired = 0;
-    final int cooldownTime = 50;
+    static int cooldownTime = 50;
     public Weapon(Player player){
         this.player = player;
         setImage(Bow);

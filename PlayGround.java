@@ -12,11 +12,16 @@ public class PlayGround extends MyWorld
     Weapon weapon = new Weapon(player);
     public static int enemykilled = 0;
     public static boolean boss = false;
+    public static boolean itempop = false;
     GreenfootImage playerSprite = new GreenfootImage("Animasi\\player1\\idle\\idle_down\\00_idle_down.png");
     GreenfootImage slimeSprite = new GreenfootImage("Animasi\\slime\\Slime1_Idle_full\\00_Slime1_Idle_full.png");
     ScoreBoard scoreBoard = new ScoreBoard();
-    GameManager manage = new GameManager();
     SlimeKing slimeking;
+    frame frame1;
+    item item1;
+    frame frame2;
+    item item2;
+    GameManager manage;
     public PlayGround()
     {     
         GreenfootImage playBackgorund = new GreenfootImage("Map\\Playground.png");
@@ -28,6 +33,15 @@ public class PlayGround extends MyWorld
         addObject(hpEmpty,70,20);
         addObject(hpFull,70,20);
         addObject(scoreBoard, 575, 50);
+        manage= new GameManager();
+        this.frame1 = new frame();
+        this.item1 = new item();
+        this.frame2 = new frame();
+        this.item2 = new item();
+        addObject(frame1,160,320);
+        addObject(frame2,480,320);
+        addObject(item1,160,320);
+        addObject(item2,480,320);
     }
     public void act(){
         if (boss && slimeking != null && slimeking.hp <= 0) {
@@ -36,7 +50,22 @@ public class PlayGround extends MyWorld
             Greenfoot.setWorld(new Win());
             return;
         }
-        if(boss == false && player.alive){
+        if(enemykilled % 10 == 0 && itempop == false){
+            manage.gamestatus = false;
+            item1.randomize();
+            item2.randomize();
+            manage.spawnItem(frame1, frame2, item1, item2);
+            enemykilled++;
+            itempop = true;
+        }
+        if(itempop == true){
+            item1.press();
+            item2.press();
+        }
+        if(itempop == false){
+            manage.removeItem(frame1, frame2, item1, item2);
+        }
+        if(boss == false && player.alive && GameManager.gamestatus == true){
             spawntimer1 = spawntimer1 + 1 ;
             spawntimer2 = spawntimer2 + 1 ;
             spawntimer3 = spawntimer3 + 1 ;
@@ -53,7 +82,7 @@ public class PlayGround extends MyWorld
             if(spawntimer4 > 250+Greenfoot.getRandomNumber(600)){
                 spawntimer4 = enemySpawner(400,1,400,400,spawntimer4, slimeSprite);
             }
-            if(enemykilled>=50){
+            if(enemykilled>=30){
                 boss = true;
                 slimeking = new SlimeKing(player);
                 addObject(slimeking,320,0);
