@@ -72,7 +72,7 @@ public class item extends powerup
                 GameManager.gamestatus = true;                
                 PlayGround.itempop = false;
             case 6:
-                Player.hp = Player.hp+2;
+                Weapon.cooldownTime = Weapon.cooldownTime - 10;
                 GameManager.gamestatus = true;                
                 PlayGround.itempop = false;
             case 7:

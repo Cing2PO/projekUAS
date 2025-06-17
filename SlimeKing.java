@@ -10,7 +10,7 @@ public class SlimeKing extends Enemy
     public boolean alive=true;
     public int animationCounter=0;
     public int enemyX,enemyY,enemyAtk;
-    public static int speed = 2;
+    public static int speed = 3;
     public static int atkpoint = 20; 
     public int atkInterval = 200;
     public int hitpoint = 4;

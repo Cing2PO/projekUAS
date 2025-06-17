@@ -21,9 +21,10 @@ public class HpFull extends HpBar
         if (newWidth > originalWidth) {
             newWidth = originalWidth;
         }
-        if (currentHp!=0){
+        if (currentHp>0){
             image.scale(newWidth,image.getHeight());
-        }else{
+        }else if(currentHp <= 0)
+        {
              image.setTransparency(0);
         }
          

@@ -9,7 +9,7 @@ public class Player extends Char
     public boolean move = false;
     public int animationCounter=0;
     public static int speed = 3;
-    public static int hp = 100;
+    public static int hp;
     public static int atk=10;
     public static int diagonalspeed = speed/2;
     public static int playerX,playerY;
@@ -24,7 +24,8 @@ public class Player extends Char
     
     public Player(HpFull bar){
         this.bar =  bar;
-        alive = true;
+        this.alive = true;
+        this.hp = 100;
     }
     
     public void act()
@@ -116,6 +117,7 @@ public class Player extends Char
     }
     private void death(){
         alive = false;
+        PlayGround.itempop = false;
         GameManager.battle_music.stop();
         GameManager.gameover_music.playLoop();
         getWorld().removeObject(bar);
